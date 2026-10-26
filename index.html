@@ -13,6 +13,7 @@
 <meta property="og:image:height" content="630">
 <meta property="og:type" content="website">
 <link rel="icon" href="data:,">
+<script>if(!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('js')</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Alegreya:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
@@ -50,24 +51,45 @@ p { margin: 0 0 1em; }
 .bar nav a { text-decoration: none; }
 .bar nav a:hover { text-decoration: underline; }
 
-/* 1. sky over the endless sea */
-.hero { background: linear-gradient(180deg, var(--ice) 0%, var(--sky) 58%, var(--sea) 100%); }
-.hero .grid { display: grid; gap: 28px; padding: 12px 0 0; }
-.hero h1 { font-size: clamp(2rem, 8.4vw, 3.9rem); letter-spacing: -.005em; }
-.hero .by { margin: 14px 0 22px; font-size: 1.1rem; }
+/* 1. the flight: pinned hero, JS writes scroll progress to --p */
+.hero { --p: 1; position: relative; }
+.js .hero { --p: 0; height: 340svh; }
+.hero {
+  --f: clamp(0, calc((var(--p) - .52) / .16), 1);
+  --l: clamp(0, calc((var(--p) - .5) / .3), 1);
+  --c: clamp(0, calc((var(--p) - .78) / .17), 1);
+}
+.stage { --hz: 72%; position: sticky; top: 0; height: 100svh; min-height: 36rem; overflow: hidden;
+  background: linear-gradient(180deg, var(--ice) 0%, var(--sky) calc(var(--hz) - .4%), #8ccbe6 var(--hz), var(--sea) calc(var(--hz) + 10%), var(--deep) 100%); }
+.stage .wrap { position: relative; z-index: 3; }
+.hero h1 { font-size: clamp(2rem, 8.4vw, 3.3rem); max-width: 15em; margin-top: 8px; }
+.forge { font-family: "Marcellus", serif; font-size: clamp(1.5rem, 5.4vw, 2.3rem); line-height: 1.15; margin: 16px 0 0;
+  opacity: var(--f); transform: translateY(calc(18px - 18px * var(--f))); }
+.final { margin-top: 18px; opacity: var(--c); transform: translateY(calc(24px - 24px * var(--c))); }
+.final .by { margin: 0 0 16px; font-size: 1.05rem; }
 .btn { display: inline-block; font: 600 1.1rem/1 "Alegreya", serif; padding: 16px 24px; border-radius: 3px; text-decoration: none; min-height: 48px; }
 .btn.gold { background: var(--gold); color: var(--abyss); box-shadow: inset 0 -3px 0 rgba(0,0,0,.18); }
 .btn.gold:hover { background: #e8b84d; }
 .btn.ember { background: var(--ember); color: var(--abyss); }
 .btn.ember:hover { background: #ef7c40; }
-.next-line { margin: 18px 0 0; font-size: 1.05rem; }
+.next-line { margin: 14px 0 0; font-size: 1.05rem; }
 .next-line a { font-weight: 600; }
-.hero .cover { justify-self: center; width: min(78%, 360px); position: relative; margin-bottom: -60px; z-index: 2; }
+.landbox { position: absolute; left: 0; right: 0; bottom: calc(100% - var(--hz)); height: 13%; overflow: hidden; z-index: 1; }
+.landbox img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 100%; max-width: none;
+  transform: translateY(calc(100% - 100% * var(--l))); will-change: transform; }
+.dragon { position: absolute; top: var(--hz); left: var(--x); width: min(44vw, 540px); z-index: 2; pointer-events: none; will-change: transform;
+  --d: clamp(0, calc((var(--p) - var(--s)) / .44), 1);
+  transform: translate(-50%, -50%) translate(calc(var(--dx) * var(--d)), calc(var(--d) * var(--d) * -150svh)) scale(calc(.05 + var(--d) * var(--d) * 2.6)); }
+.d1 { --x: 52%; --dx: -30vw; --s: .02; }
+.d2 { --x: 57%; --dx: 26vw; --s: .12; }
+.d3 { --x: 47%; --dx: -2vw; --s: .22; }
+.hero .cover { position: absolute; z-index: 3; right: 16px; bottom: 20px; width: 44vw; max-width: 340px;
+  opacity: var(--c); transform: translateY(calc(40px - 40px * var(--c))); will-change: transform, opacity; }
 .hero .cover img { box-shadow: 0 24px 50px -18px rgba(15,29,42,.7); border-radius: 2px; }
-.horizon { height: 120px; background: linear-gradient(180deg, var(--sea), var(--deep)); border-top: 2px solid var(--gold); }
+@media (prefers-reduced-motion: reduce) { .dragon { display: none; } }
 
 /* 2. DragonGods, November 16 */
-.release { background: var(--deep); color: var(--ice); padding: 20px 0 72px; margin-top: -60px; }
+.release { background: var(--deep); color: var(--ice); padding: 56px 0 72px; }
 .release .date { font-family: "Marcellus", serif; color: var(--ember); font-size: clamp(3.4rem, 16vw, 7.5rem); line-height: .95; margin: 0 0 10px; }
 .release h2 { font-size: clamp(1.8rem, 6vw, 2.8rem); margin-bottom: 18px; }
 .release blockquote { margin: 0 0 22px; padding-left: 16px; border-left: 2px solid var(--gold); font-style: italic; font-size: 1.2rem; max-width: 34em; }
@@ -114,10 +136,11 @@ footer p a { color: var(--ice); }
 
 @media (min-width: 820px) {
   .bar nav { display: flex; }
-  .hero .grid { grid-template-columns: 1.15fr .85fr; align-items: end; padding-top: 40px; }
-  .hero .text { padding-bottom: 120px; }
-  .hero .cover { width: 100%; max-width: 380px; margin-bottom: -90px; }
-  .release { margin-top: -90px; padding-top: 40px; }
+  .stage { --hz: 75%; }
+  .landbox { height: 14%; }
+  .stage .text { max-width: 640px; padding-top: 24px; }
+  .hero .cover { right: max(20px, calc(50% - 540px)); top: 96px; bottom: auto; width: 30vw; max-width: 330px; }
+  .release { padding-top: 80px; }
   .release .grid { display: grid; grid-template-columns: auto 1fr; gap: 48px; align-items: start; }
   .book .grid { grid-template-columns: 1fr 240px; gap: 64px; align-items: start; }
   .world { padding: 120px 0; }
@@ -130,29 +153,35 @@ footer p a { color: var(--ice); }
 
 <main>
 <section class="hero" id="top">
-  <div class="wrap">
-    <header class="bar">
-      <a class="name" href="#top">Justin C. Orr</a>
-      <nav aria-label="Main">
-        <a href="#dragongods">DragonGods</a>
-        <a href="#dragonforged">DragonForged</a>
-        <a href="#pryakonis">PryaKonis</a>
-        <a href="#about">About</a>
-      </nav>
-    </header>
-    <div class="grid">
+  <div class="stage">
+    <div class="landbox" aria-hidden="true"><img src="img/land.png" width="2400" height="420" alt=""></div>
+    <img class="dragon d1" src="img/dragon-green.png" width="800" height="520" alt="" aria-hidden="true">
+    <img class="dragon d2" src="img/dragon-silver.png" width="800" height="520" alt="" aria-hidden="true">
+    <img class="dragon d3" src="img/dragon-ember.png" width="800" height="520" alt="" aria-hidden="true">
+    <div class="wrap">
+      <header class="bar">
+        <a class="name" href="#top">Justin C. Orr</a>
+        <nav aria-label="Main">
+          <a href="#dragongods">DragonGods</a>
+          <a href="#dragonforged">DragonForged</a>
+          <a href="#pryakonis">PryaKonis</a>
+          <a href="#about">About</a>
+        </nav>
+      </header>
       <div class="text">
         <h1>Three sibling dragons, banished from their home, are forced to fly over an endless sea.</h1>
-        <p class="by">DragonForged, The Banished Saga Novella. Free to read.</p>
-        <a class="btn gold" href="https://linktr.ee/brightfantasybooks">Read DragonForged free</a>
-        <p class="next-line">DragonGods comes out November 16. <a href="#dragongods">Preorder the ebook</a></p>
-      </div>
-      <div class="cover">
-        <img src="img/cover-640.jpg" srcset="img/cover-640.jpg 640w, img/cover-1000.jpg 1000w" sizes="(min-width: 820px) 380px, 78vw" width="640" height="989" alt="The cover of DragonForged: a green dragon above an icy sea and a spiked blue-silver dragon breathing fire below.">
+        <p class="forge">They forge their own land.</p>
+        <div class="final">
+          <p class="by">DragonForged, The Banished Saga Novella. Free to read.</p>
+          <a class="btn gold" href="https://linktr.ee/brightfantasybooks">Read DragonForged free</a>
+          <p class="next-line">DragonGods comes out November 16. <a href="#dragongods">Preorder the ebook</a></p>
+        </div>
       </div>
     </div>
+    <div class="cover">
+      <img src="img/cover-640.jpg" srcset="img/cover-640.jpg 640w, img/cover-1000.jpg 1000w" sizes="(min-width: 820px) 330px, 44vw" width="640" height="989" alt="The cover of DragonForged: a green dragon above an icy sea and a spiked blue-silver dragon breathing fire below.">
+    </div>
   </div>
-  <div class="horizon" aria-hidden="true"></div>
 </section>
 
 <section class="release" id="dragongods">
@@ -225,5 +254,22 @@ footer p a { color: var(--ice); }
     <p class="note">A mockup made by Sparsh Saini for Justin C. Orr. Not affiliated, not live. The cover and words are his.</p>
   </div>
 </footer>
+<script>
+(() => {
+  const hero = document.querySelector('.hero');
+  if (!hero || !document.documentElement.classList.contains('js')) return;
+  let ticking = false, top = 0, t = 1;
+  const measure = () => { top = hero.offsetTop; t = Math.max(1, hero.offsetHeight - innerHeight); update(); };
+  const update = () => {
+    ticking = false;
+    const p = Math.min(1, Math.max(0, (scrollY - top) / t));
+    hero.style.setProperty('--p', p.toFixed(4));
+  };
+  addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+  addEventListener('resize', measure);
+  addEventListener('load', measure);
+  measure();
+})();
+</script>
 </body>
 </html>
