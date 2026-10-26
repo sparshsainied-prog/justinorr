@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Justin C. Orr, DragonForged and DragonGods</title>
+<meta name="description" content="A homepage idea for Justin C. Orr and the Banished Saga, made by Sparsh Saini. Not his official site.">
+<meta property="og:title" content="A homepage for Justin C. Orr, made by Sparsh Saini">
+<meta property="og:description" content="A homepage idea for Justin C. Orr's Banished Saga: read DragonForged free, DragonGods out November 16. Made by Sparsh Saini, not his official site.">
+<meta property="og:image" content="https://sparshsainied-prog.github.io/justinorr/img/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Alegreya:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sky: #a3d9ed;      /* top of the cover */
+  --ice: #e4f3f9;
+  --sea: #5aa8d6;      /* mid cover water */
+  --deep: #1d3448;
+  --abyss: #0f1d2a;
+  --silver: #bbc7da;
+  --gold: #d9a53a;
+  --gold-ink: #7a5310;
+  --ember: #e0682a;
+  --ink: #12273a;
+  --line: 1px solid rgba(18,39,58,.25);
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0; background: var(--abyss); color: var(--ink);
+  font: 400 1.1rem/1.6 "Alegreya", Georgia, serif;
+}
+img { max-width: 100%; height: auto; display: block; }
+a { color: inherit; }
+h1, h2, h3 { font-family: "Marcellus", Georgia, serif; font-weight: 400; line-height: 1.12; margin: 0; }
+p { margin: 0 0 1em; }
+.wrap { width: 100%; max-width: 1120px; margin: 0 auto; padding: 0 20px; }
+:focus-visible { outline: 3px solid var(--ember); outline-offset: 3px; }
+
+.made { margin: 0; background: var(--abyss); color: var(--ice); font-size: .9rem; text-align: center; padding: 8px 16px; line-height: 1.35; }
+.bar { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 14px 0; }
+.bar .name { font-family: "Marcellus", serif; font-size: 1.2rem; text-decoration: none; }
+.bar nav { display: none; gap: 22px; font-size: 1rem; }
+.bar nav a { text-decoration: none; }
+.bar nav a:hover { text-decoration: underline; }
+
+/* 1. sky over the endless sea */
+.hero { background: linear-gradient(180deg, var(--ice) 0%, var(--sky) 58%, var(--sea) 100%); }
+.hero .grid { display: grid; gap: 28px; padding: 12px 0 0; }
+.hero h1 { font-size: clamp(2rem, 8.4vw, 3.9rem); letter-spacing: -.005em; }
+.hero .by { margin: 14px 0 22px; font-size: 1.1rem; }
+.btn { display: inline-block; font: 600 1.1rem/1 "Alegreya", serif; padding: 16px 24px; border-radius: 3px; text-decoration: none; min-height: 48px; }
+.btn.gold { background: var(--gold); color: var(--abyss); box-shadow: inset 0 -3px 0 rgba(0,0,0,.18); }
+.btn.gold:hover { background: #e8b84d; }
+.btn.ember { background: var(--ember); color: var(--abyss); }
+.btn.ember:hover { background: #ef7c40; }
+.next-line { margin: 18px 0 0; font-size: 1.05rem; }
+.next-line a { font-weight: 600; }
+.hero .cover { justify-self: center; width: min(78%, 360px); position: relative; margin-bottom: -60px; z-index: 2; }
+.hero .cover img { box-shadow: 0 24px 50px -18px rgba(15,29,42,.7); border-radius: 2px; }
+.horizon { height: 120px; background: linear-gradient(180deg, var(--sea), var(--deep)); border-top: 2px solid var(--gold); }
+
+/* 2. DragonGods, November 16 */
+.release { background: var(--deep); color: var(--ice); padding: 20px 0 72px; margin-top: -60px; }
+.release .date { font-family: "Marcellus", serif; color: var(--ember); font-size: clamp(3.4rem, 16vw, 7.5rem); line-height: .95; margin: 0 0 10px; }
+.release h2 { font-size: clamp(1.8rem, 6vw, 2.8rem); margin-bottom: 18px; }
+.release blockquote { margin: 0 0 22px; padding-left: 16px; border-left: 2px solid var(--gold); font-style: italic; font-size: 1.2rem; max-width: 34em; }
+.release ul { list-style: none; padding: 0; margin: 0 0 28px; max-width: 34em; }
+.release li { padding: 10px 0; border-bottom: 1px solid rgba(228,243,249,.2); }
+
+/* 3. The book */
+.book { background: var(--ice); padding: 72px 0; }
+.book .grid { display: grid; gap: 32px; }
+.book h2 { font-size: clamp(2rem, 7vw, 3.2rem); }
+.book .sub { font-style: italic; margin: 6px 0 24px; }
+.book .blurb { font-size: 1.22rem; max-width: 32em; }
+.book .blurb p:first-child::first-letter { font-family: "Marcellus", serif; float: left; font-size: 3.6em; line-height: .85; padding: 4px 8px 0 0; color: var(--deep); }
+.facts { display: flex; flex-wrap: wrap; gap: 6px 22px; margin: 8px 0 26px; padding: 12px 0; border-top: var(--line); border-bottom: var(--line); font-size: 1rem; }
+.book .side img { width: 220px; border-radius: 2px; box-shadow: 0 14px 30px -14px rgba(15,29,42,.6); }
+.textlink { font-weight: 600; }
+
+/* 4. PryaKonis */
+.world { background: linear-gradient(180deg, var(--sea) 0%, var(--deep) 100%); color: #fff; padding: 80px 0; }
+.world h2 { font-size: clamp(2.6rem, 11vw, 5.6rem); letter-spacing: .01em; }
+.world .his { font-size: clamp(1.25rem, 3.6vw, 1.7rem); max-width: 30em; margin: 22px 0 18px; text-shadow: 0 1px 2px rgba(15,29,42,.35); }
+.world .credit { font-size: 1rem; color: var(--ice); }
+
+/* 5. reader */
+.reader { background: var(--abyss); color: var(--ice); padding: 72px 0; }
+.reader blockquote { margin: 0; font-family: "Marcellus", serif; font-size: clamp(1.7rem, 5.6vw, 2.9rem); line-height: 1.2; max-width: 22em; color: var(--silver); }
+.reader blockquote span { color: var(--gold); }
+.reader cite { display: block; margin-top: 18px; font: italic 1.05rem "Alegreya", serif; color: var(--ice); }
+
+/* 6. about */
+.about { background: var(--silver); padding: 72px 0; }
+.about h2 { font-size: clamp(2rem, 7vw, 3.2rem); margin-bottom: 20px; }
+.about .vow { font-family: "Marcellus", serif; font-size: clamp(1.4rem, 4.4vw, 2rem); line-height: 1.25; max-width: 24em; margin-bottom: 20px; }
+.about p { max-width: 34em; }
+
+/* 7. instagram */
+.ig { background: var(--ice); padding: 56px 0; }
+.ig .row { display: flex; flex-wrap: wrap; align-items: baseline; gap: 12px 28px; }
+.ig .handle { font-family: "Marcellus", serif; font-size: clamp(1.6rem, 6vw, 2.6rem); text-decoration-thickness: 2px; text-underline-offset: 6px; word-break: break-word; }
+
+footer { background: var(--abyss); color: var(--silver); padding: 36px 0 44px; font-size: .95rem; }
+footer .note { margin: 0; }
+footer p a { color: var(--ice); }
+
+@media (min-width: 820px) {
+  .bar nav { display: flex; }
+  .hero .grid { grid-template-columns: 1.15fr .85fr; align-items: end; padding-top: 40px; }
+  .hero .text { padding-bottom: 120px; }
+  .hero .cover { width: 100%; max-width: 380px; margin-bottom: -90px; }
+  .release { margin-top: -90px; padding-top: 40px; }
+  .release .grid { display: grid; grid-template-columns: auto 1fr; gap: 48px; align-items: start; }
+  .book .grid { grid-template-columns: 1fr 240px; gap: 64px; align-items: start; }
+  .world { padding: 120px 0; }
+  .reader, .about, .book { padding: 100px 0; }
+}
+</style>
+</head>
+<body>
+<p class="made">A homepage idea made by Sparsh Saini for Justin C. Orr. Not his official site.</p>
+
+<main>
+<section class="hero" id="top">
+  <div class="wrap">
+    <header class="bar">
+      <a class="name" href="#top">Justin C. Orr</a>
+      <nav aria-label="Main">
+        <a href="#dragongods">DragonGods</a>
+        <a href="#dragonforged">DragonForged</a>
+        <a href="#pryakonis">PryaKonis</a>
+        <a href="#about">About</a>
+      </nav>
+    </header>
+    <div class="grid">
+      <div class="text">
+        <h1>Three sibling dragons, banished from their home, are forced to fly over an endless sea.</h1>
+        <p class="by">DragonForged, The Banished Saga Novella. Free to read.</p>
+        <a class="btn gold" href="https://linktr.ee/brightfantasybooks">Read DragonForged free</a>
+        <p class="next-line">DragonGods comes out November 16. <a href="#dragongods">Preorder the ebook</a></p>
+      </div>
+      <div class="cover">
+        <img src="img/cover-640.jpg" srcset="img/cover-640.jpg 640w, img/cover-1000.jpg 1000w" sizes="(min-width: 820px) 380px, 78vw" width="640" height="989" alt="The cover of DragonForged: a green dragon above an icy sea and a spiked blue-silver dragon breathing fire below.">
+      </div>
+    </div>
+  </div>
+  <div class="horizon" aria-hidden="true"></div>
+</section>
+
+<section class="release" id="dragongods">
+  <div class="wrap grid">
+    <p class="date">Nov<br>16</p>
+    <div>
+      <h2>DragonGods</h2>
+      <blockquote>"Why wait until December when I can get the book to you sooner, with no compromise of quality."</blockquote>
+      <ul>
+        <li>The ebook is up for preorder on Amazon now.</li>
+        <li>Paperback and hardcover come out the same day, November 16.</li>
+      </ul>
+      <a class="btn ember" href="https://linktr.ee/brightfantasybooks">Preorder DragonGods</a>
+    </div>
+  </div>
+</section>
+
+<section class="book" id="dragonforged">
+  <div class="wrap grid">
+    <div>
+      <h2>DragonForged</h2>
+      <p class="sub">The Banished Saga Novella</p>
+      <div class="blurb">
+        <p>Three sibling dragons, banished from their home, are forced to fly over an endless sea. They forge their own land, sewing life in all forms across it.</p>
+        <p>But not all three are willing to live the rest of their lives in peace. The one who caused their banishment dreams of returning in vengeance and fury. He will stop at nothing to make this dream come true.</p>
+      </div>
+      <p class="facts"><span>Published June 1, 2026</span><span>84 pages</span><span>89 ratings on Goodreads</span></p>
+      <a class="btn gold" href="https://linktr.ee/brightfantasybooks">Get the free copy</a>
+      <p style="margin-top:18px"><a class="textlink" href="https://www.goodreads.com/book/show/252219913-dragonforged">DragonForged on Goodreads</a></p>
+    </div>
+    <div class="side">
+      <img src="img/cover-640.jpg" width="640" height="989" loading="lazy" alt="DragonForged cover">
+    </div>
+  </div>
+</section>
+
+<section class="world" id="pryakonis">
+  <div class="wrap">
+    <h2>PryaKonis</h2>
+    <p class="his">"The world I have lived in for almost 7 years now. The world forged by dragons banished from their homeland, forced to create something for themselves."</p>
+    <p class="credit">The map of PryaKonis is drawn by <a href="https://www.instagram.com/keir_cartography/">Keir Cartography</a>.</p>
+  </div>
+</section>
+
+<section class="reader" aria-label="What a reader said">
+  <div class="wrap">
+    <blockquote>"Who says you need <span>120k words</span> to create an intriguing fantasy world?"</blockquote>
+    <cite>@shattered.anthologies, on DragonForged, 25 October 2026</cite>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="wrap">
+    <h2>Justin C. Orr</h2>
+    <p class="vow">Restoring Virtue, Valor, and Nobility to Modern Fantasy.</p>
+    <p>DragonForged is free to read, and DragonGods comes out November 16.</p>
+  </div>
+</section>
+
+<section class="ig" aria-label="Instagram">
+  <div class="wrap row">
+    <a class="handle" href="https://www.instagram.com/brightfantasybooks/">@brightfantasybooks</a>
+    <span>Follow along on Instagram.</span>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="note">A mockup made by Sparsh Saini for Justin C. Orr. Not affiliated, not live. The cover and words are his.</p>
+  </div>
+</footer>
+</body>
+</html>
